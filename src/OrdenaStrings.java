@@ -12,40 +12,12 @@ public class OrdenaStrings {
 		palavras.add("Seja bem vindo!");
 		palavras.add("Bom dia");
 		palavras.add("Obrigado");
+			
+		palavras.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
 
-		Comparator<String> comparador = new ComparadorPorTamanho();
-
-		// Collections.sort(palavras, comparador);
-		palavras.sort(comparador);
-		// System.out.println(palavras);
-
-//		for (String string : palavras) {
-//			System.out.println(string);
-//		}
-
-		Consumer<String> Consumidor = new ImprimeNaLinha();
-		palavras.forEach(Consumidor);
+		palavras.forEach(t -> System.out.println(t));
 
 	}
 
 }
 
-class ImprimeNaLinha implements Consumer<String> {
-	@Override
-	public void accept(String t) {
-		System.out.println(t);
-
-	}
-
-}
-
-class ComparadorPorTamanho implements Comparator<String> {
-	@Override
-	public int compare(String s1, String s2) {
-		if (s1.length() < s2.length())
-			return -1;
-		if (s1.length() > s2.length())
-			return 1;
-		return 0;
-	}
-}
